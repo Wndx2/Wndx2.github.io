@@ -23,8 +23,13 @@ body {
 	src: url(assets/fonts/Paperlogy-1.001/Paperlogy-4Regular.ttf);
 }
 
+@font-face {
+	font-family: wndyd;
+	src: url(assets/fonts/excellence_font_v2\ copy.ttf);
+}
+
 body {
-	font-family: ComputerModern, Paperlogy, sans-serif; /* ← fallback added */
+	font-family: wndyd, Paperlogy, sans-serif; /* ← fallback added */
 	color: #e8e8e8;
 	text-align: center;
 	/* background moved up to html/body for consistency */
