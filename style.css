@@ -1,126 +1,137 @@
-/* Make sure the entire page can be full height without weird defaults */
-html,
-body {
+/* General styles */
+html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	overflow-x: hidden; /* ← prevents horizontal scroll when logo moves right */
-	overflow-y: auto; /* ← allows vertical scroll only if content overflows */
+	overflow-x: hidden;
+	overflow-y: auto;
 	background-image: linear-gradient(#000, #151515);
-}
-
-/* Fonts — unchanged, looks good */
-@font-face {
-	font-family: ComputerModern;
-	src: url(assets/fonts/ComputerModern/ComputerModern-Regular.ttf);
-}
-@font-face {
-	font-family: PaperlogyBlack;
-	src: url(assets/fonts/Paperlogy-1.001/Paperlogy-9Black.ttf);
-}
-@font-face {
-	font-family: Paperlogy;
-	src: url(assets/fonts/Paperlogy-1.001/Paperlogy-4Regular.ttf);
-}
-
-@font-face {
-	font-family: wndyd;
-	src: url(assets/fonts/excellence_font_v2\ copy.ttf);
-}
-
-body {
-	font-family: wndyd, Paperlogy, sans-serif; /* ← fallback added */
+	font-family: 'wndyd', 'Paperlogy', sans-serif;
 	color: #e8e8e8;
 	text-align: center;
-	/* background moved up to html/body for consistency */
 }
 
-/* Container center — this is the key part */
+/* Fonts */
+@font-face {
+	font-family: 'wndyd';
+	src: url('assets/fonts/excellence_font_v2 copy.ttf');
+}
+@font-face {
+	font-family: 'Paperlogy';
+	src: url('assets/fonts/Paperlogy-1.001/Paperlogy-4Regular.ttf');
+}
+
+/* Container center */
 .c-center {
-	height: 100vh; /* ← Use vh instead of 100% — more reliable */
-	width: 100vw; /* ← or 100% — both work now */
-	min-height: 100vh; /* ← fallback if vh is blocked */
-	position: relative;
-	overflow: hidden; /* ← keeps logo INSIDE this box */
-	display: flex; /* ← modern replacement for display: table */
-	justify-content: center;
-	align-items: center;
-	/* Remove text-align: center; — flex handles centering better */
-}
-
-/* If you really need/want to keep display: table (e.g. for very old browser support) */
-.c-center.table-mode {
-	/* ← optional alternate class */
-	display: table;
 	height: 100vh;
 	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 1;
 }
 
-/* Table-cell child — only needed if you keep display: table */
 .p-center {
-	display: table-cell;
-	vertical-align: middle;
 	padding: 2rem;
-	line-height: 2;
 }
 
-/* DVD logo */
-#dvd-logo {
-	position: absolute;
-	width: 120px;
-	height: auto;
+#date {
+	font-size: 50px;
+	margin: 0;
+}
+
+#live-time {
+	font-size: 2rem;
+	margin: 0;
+}
+
+/* Wave Background Styles */
+.waves-container {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
 	top: 0;
 	left: 0;
-	animation: spin 0.5s linear infinite;
+	z-index: 0;
 	pointer-events: none;
+	display: flex;
+	align-items: flex-end;
 }
 
-b {
-	font-weight: bolder;
+.waves {
+	position: relative;
+	width: 100%;
+	height: 15vh;
+	min-height: 100px;
+	max-height: 150px;
 }
 
-h1#name {
-	color: #e8e8e8;
-	display: inline-block;
-	border-right: 2px solid #e8e8e8;
-	animation: blink 0.75s step-end infinite;
-	white-space: nowrap;
+/* Animation */
+.parallax > use {
+	animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+	animation-delay: -2s;
+	animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+	animation-delay: -3s;
+	animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+	animation-delay: -4s;
+	animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+	animation-delay: -5s;
+	animation-duration: 20s;
 }
 
-h1,
-h2,
-h3 {
-	color: #e8e8e8;
+@keyframes move-forever {
+	0% { transform: translate3d(-90px, 0, 0); }
+	100% { transform: translate3d(85px, 0, 0); }
 }
 
-@keyframes blink {
-	from,
-	to {
-		border-color: transparent;
-	}
-	50% {
-		border-color: #e8e8e8;
-	}
-}
-
-/* @keyframes spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-} */
-
-.divider {
-	margin: 16rem 0;
-} /* ← added 0 for left/right */
-
-a.socials {
-	margin: 8px;
-	text-decoration: none;
+/* Main content */
+main {
+	padding: 2rem;
+	position: relative;
+	z-index: 1;
 }
 
 img {
 	filter: brightness(0) invert(1);
+}
+
+.top-right-btn {
+	position: fixed;
+	top: 20px;
+	right: 40px;
+	width: 50px;
+	height: 50px;
+	background-color: #ffd800;
+	color: #000;
+	text-decoration: none;
+	border-radius: 50%;
+	z-index: 100;
+	transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+}
+
+.top-right-btn img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: none; /* Ensure no global invert filter is applied */
+}
+
+.top-right-btn:hover {
+	background-color: #e6c200;
+	transform: scale(1.1);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
