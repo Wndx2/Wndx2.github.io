@@ -1,24 +1,25 @@
 /* General styles */
-html, body {
+html,
+body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
 	overflow-y: auto;
 	background-image: linear-gradient(#000, #151515);
-	font-family: 'wndyd', 'Paperlogy', sans-serif;
+	font-family: "wndyd", "Paperlogy", sans-serif;
 	color: #e8e8e8;
 	text-align: center;
 }
 
 /* Fonts */
 @font-face {
-	font-family: 'wndyd';
-	src: url('assets/fonts/excellence_font_v2 copy.ttf');
+	font-family: "wndyd";
+	src: url("assets/fonts/excellence_font_v2.ttf");
 }
 @font-face {
-	font-family: 'Paperlogy';
-	src: url('assets/fonts/Paperlogy-1.001/Paperlogy-4Regular.ttf');
+	font-family: "Paperlogy";
+	src: url("assets/fonts/Paperlogy-1.001/Paperlogy-4Regular.ttf");
 }
 
 /* Container center */
@@ -89,8 +90,12 @@ html, body {
 }
 
 @keyframes move-forever {
-	0% { transform: translate3d(-90px, 0, 0); }
-	100% { transform: translate3d(85px, 0, 0); }
+	0% {
+		transform: translate3d(-90px, 0, 0);
+	}
+	100% {
+		transform: translate3d(85px, 0, 0);
+	}
 }
 
 /* Main content */
@@ -115,7 +120,10 @@ img {
 	text-decoration: none;
 	border-radius: 50%;
 	z-index: 100;
-	transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+	transition:
+		background-color 0.3s ease,
+		transform 0.2s ease,
+		box-shadow 0.3s ease;
 	display: flex;
 	justify-content: center;
 	align-items: center;
