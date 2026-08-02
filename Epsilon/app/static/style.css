@@ -1,0 +1,240 @@
+@font-face {
+  font-family: "CMU Serif";
+  src: url("fonts/cmunrm.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CMU Serif";
+  src: url("fonts/cmunbx.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CMU Serif";
+  src: url("fonts/cmunti.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "CMU Serif";
+  src: url("fonts/cmunbi.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --border: #ffffff;
+  --muted: #9a9a9a;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "CMU Serif", "Times New Roman", serif;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem 0;
+}
+
+.logo {
+  font-size: 3rem;
+  font-style: italic;
+  line-height: 1;
+  user-select: none;
+}
+
+.stage {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section-label {
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin: 0 0 1rem;
+  color: var(--fg);
+}
+
+.split {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input-section,
+.preview-section {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.input-section {
+  position: relative;
+}
+
+.preview-box {
+  flex: 1;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: auto;
+  max-width: 100%;
+  border: 1px solid var(--border);
+}
+
+.preview-box .katex {
+  color: var(--fg);
+  font-size: 1rem;
+}
+
+.preview-box > svg {
+  max-width: 100%;
+  height: auto;
+  transform: scale(1.8);
+  transform-origin: center;
+}
+
+.preview-placeholder {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.error-message {
+  color: #ff5555;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  margin-top: 0.5rem;
+  font-family: "Brass Mono Code", Menlo, monospace;
+}
+
+.latex-input {
+  width: 100%;
+  flex: 1;
+  min-height: 420px;
+  resize: vertical;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  font-family: "Brass Mono Code", Menlo, Consolas, monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.latex-input::placeholder {
+  color: #212121;
+  font-family: "CMU Serif", serif;
+  text-align: center;
+}
+
+.latex-input:focus {
+  outline: 1px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.actions {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
+}
+
+.copy-btn-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.copy-btn {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 0.85rem 1.75rem;
+  font-family: "CMU Serif", serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.copy-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.hint-text {
+  margin: 0;
+  text-align: right;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.6rem 1.25rem;
+  font-family: "CMU Serif", serif;
+  font-size: 0.95rem;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.toast.show {
+  opacity: 1;
+}
