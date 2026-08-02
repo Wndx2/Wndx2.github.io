@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Epsilon &mdash; LaTeX Renderer</title>
+    <link rel="stylesheet" href="app/static/katex/katex.min.css" />
+    <link rel="stylesheet" href="app/static/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <span class="logo">&epsilon;</span>
+    </header>
+
+    <main class="stage">
+      <div class="split">
+        <section class="input-section">
+          <textarea
+            id="latex-input"
+            class="latex-input"
+            placeholder="LATEX MATH GOES HERE"
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off"
+          ></textarea>
+
+          <div class="actions">
+            <div class="copy-btn-row">
+              <button id="copy-light-btn" class="copy-btn" type="button">
+                Copy Light Mode
+              </button>
+              <button id="copy-dark-btn" class="copy-btn" type="button">
+                Copy Dark Mode
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="preview-section">
+          <div id="preview" class="preview-box" aria-live="polite">
+            <span class="preview-placeholder">Nothing to render yet</span>
+          </div>
+          <p id="error-message" class="error-message" hidden></p>
+        </section>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="app/static/katex/katex.min.js"></script>
+    <script src="app/static/vendor/html-to-image.js"></script>
+    <script src="app/static/snippets.js"></script>
+    <script src="app/static/snippet-engine.js"></script>
+    <script src="app/static/app.static.js"></script>
+  </body>
+</html>
